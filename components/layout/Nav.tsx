@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { NAV_LINKS } from "@/content/content";
 import { LinkButton } from "@/components/ui/Button";
+import { Magnetic } from "@/components/ui/Magnetic";
 import { DubaiClock } from "./DubaiClock";
 
 export function Nav() {
@@ -64,9 +65,11 @@ export function Nav() {
 
         <div className="hidden items-center gap-5 md:flex">
           <DubaiClock />
-          <LinkButton href="#contact" variant="primary" size="sm">
-            Get a quote
-          </LinkButton>
+          <Magnetic strength={0.35}>
+            <LinkButton href="#contact" variant="primary" size="sm">
+              Get a quote
+            </LinkButton>
+          </Magnetic>
         </div>
 
         <button

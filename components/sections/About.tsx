@@ -1,7 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from "framer-motion";
 import { ABOUT } from "@/content/content";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { RevealTextInView } from "@/components/ui/RevealText";
@@ -49,39 +55,73 @@ export function About() {
         </div>
 
         <div className="md:col-span-7">
-          <div className="flex flex-col gap-8 md:gap-20">
+          <div className="flex flex-col gap-8 md:gap-24">
             {ABOUT.images.map((img, i) => (
-              <motion.div
+              <ParallaxImage
                 key={img.src}
-                initial={{ opacity: 0, y: 48, scale: 0.97 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-15% 0px" }}
-                transition={{
-                  duration: 1,
-                  ease: [0.16, 1, 0.3, 1],
-                  delay: i === 0 ? 0 : 0.05,
-                }}
-                className={
-                  "relative w-full overflow-hidden rounded-lg " +
-                  (i === 0
-                    ? "aspect-[4/5] md:ml-10"
-                    : i === 1
-                      ? "aspect-[5/4] md:mr-14"
-                      : "aspect-[4/5] md:ml-20")
-                }
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover"
-                />
-              </motion.div>
+                src={img.src}
+                alt={img.alt}
+                offset={i}
+              />
             ))}
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function ParallaxImage({
+  src,
+  alt,
+  offset,
+}: {
+  src: string;
+  alt: string;
+  offset: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [reduced ? 0 : 40, reduced ? 0 : -60],
+  );
+  const scale = useTransform(scrollYProgress, [0, 1], [1, reduced ? 1 : 1.08]);
+
+  const wrapper =
+    offset === 0
+      ? "aspect-[4/5] md:ml-10"
+      : offset === 1
+        ? "aspect-[5/4] md:mr-14"
+        : "aspect-[4/5] md:ml-20";
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 48, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-15% 0px" }}
+      transition={{
+        duration: 1,
+        ease: [0.16, 1, 0.3, 1],
+        delay: offset === 0 ? 0 : 0.05,
+      }}
+      className={`relative w-full overflow-hidden rounded-lg will-change-transform ${wrapper}`}
+    >
+      <motion.div style={{ y, scale }} className="absolute inset-0">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(min-width: 768px) 50vw, 100vw"
+          className="object-cover"
+        />
+      </motion.div>
+    </motion.div>
   );
 }

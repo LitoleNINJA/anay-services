@@ -8,6 +8,7 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { HERO } from "@/content/content";
 import { RevealText } from "@/components/ui/RevealText";
 import { LinkButton } from "@/components/ui/Button";
+import { Magnetic } from "@/components/ui/Magnetic";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -59,10 +60,12 @@ export function Hero() {
             transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1], delay: 1.05 }}
             className="mt-10 flex flex-wrap items-center gap-3"
           >
-            <LinkButton href={HERO.primaryCta.href} variant="primary" size="lg">
-              {HERO.primaryCta.label}
-              <ArrowUpRight size={16} strokeWidth={1.6} />
-            </LinkButton>
+            <Magnetic strength={0.32}>
+              <LinkButton href={HERO.primaryCta.href} variant="primary" size="lg">
+                {HERO.primaryCta.label}
+                <ArrowUpRight size={16} strokeWidth={1.6} />
+              </LinkButton>
+            </Magnetic>
             <LinkButton href={HERO.secondaryCta.href} variant="outline" size="lg">
               {HERO.secondaryCta.label}
             </LinkButton>

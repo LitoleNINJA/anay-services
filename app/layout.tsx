@@ -5,6 +5,8 @@ import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/Toaster";
+import { Grain } from "@/components/ui/Grain";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { BUSINESS, buildLocalBusinessJsonLd } from "@/lib/business";
 
 const fraunces = Fraunces({
@@ -98,7 +100,9 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
         </SmoothScroll>
+        <Grain />
         <Toaster />
+        <SpeedInsights />
       </body>
     </html>
   );

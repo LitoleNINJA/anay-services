@@ -13,6 +13,7 @@ import {
 } from "@/lib/validations";
 import { submitContact, type ContactState } from "@/app/actions/contact";
 import { cn } from "@/lib/cn";
+import { Magnetic } from "@/components/ui/Magnetic";
 
 const initialState: ContactState = { status: "idle" };
 
@@ -168,29 +169,31 @@ export function ContactForm() {
         </label>
       </div>
 
-      <motion.button
-        type="submit"
-        disabled={isPending}
-        whileTap={{ scale: 0.98 }}
-        className={cn(
-          "group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[--color-ink] px-7 text-sm font-medium text-[--color-bone] transition-colors hover:bg-[--color-gold] hover:text-[--color-ink] disabled:cursor-not-allowed disabled:opacity-60",
-        )}
-      >
-        {isPending ? (
-          <>
-            <Spinner /> Sending
-          </>
-        ) : (
-          <>
-            Send enquiry
-            <ArrowUpRight
-              size={16}
-              strokeWidth={1.6}
-              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </>
-        )}
-      </motion.button>
+      <Magnetic strength={0.28}>
+        <motion.button
+          type="submit"
+          disabled={isPending}
+          whileTap={{ scale: 0.98 }}
+          className={cn(
+            "group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[--color-ink] px-7 text-sm font-medium text-[--color-bone] transition-colors hover:bg-[--color-gold] hover:text-[--color-ink] disabled:cursor-not-allowed disabled:opacity-60",
+          )}
+        >
+          {isPending ? (
+            <>
+              <Spinner /> Sending
+            </>
+          ) : (
+            <>
+              Send enquiry
+              <ArrowUpRight
+                size={16}
+                strokeWidth={1.6}
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </>
+          )}
+        </motion.button>
+      </Magnetic>
 
       <p className="text-xs text-[--color-muted]">
         By sending this form you agree we may contact you about your enquiry.
@@ -215,7 +218,7 @@ function Field({
   input: React.ReactNode;
 }) {
   return (
-    <label className="block">
+    <label className="block" suppressHydrationWarning>
       <span className="flex items-baseline justify-between gap-3 pb-2 text-[11px] uppercase tracking-[0.22em] text-[--color-muted]">
         <span>{label}</span>
         {hint && <span className="normal-case tracking-normal text-[10px]">{hint}</span>}

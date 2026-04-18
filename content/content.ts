@@ -176,7 +176,7 @@ export const SERVICES: Service[] = [
     blurb:
       "Hot and cold, drainage, pumps and fixtures — pressure-tested, concealed where it should be, serviceable where it counts.",
     image: {
-      src: "https://images.unsplash.com/photo-1604328702728-db3d61c50b42?auto=format&fit=crop&w=1200&q=80",
+      src: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80",
       alt: "Detail of plumbing fixtures in a finished bathroom.",
     },
   },
@@ -273,8 +273,8 @@ export const PROJECTS: Project[] = [
     location: "Dubai",
     scope: ["Tile", "Gypsum", "Paint"],
     image: {
-      src: "https://images.unsplash.com/photo-1567449303078-57ad995bd17f?auto=format&fit=crop&w=1600&q=80",
-      alt: "Minimal boutique interior with stone floor.",
+      src: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=1600&q=80",
+      alt: "Minimal boutique retail interior with stone floor.",
     },
     span: "tall",
   },
