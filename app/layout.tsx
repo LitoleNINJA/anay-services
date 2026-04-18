@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/Toaster";
 import { Grain } from "@/components/ui/Grain";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import { BUSINESS, buildLocalBusinessJsonLd } from "@/lib/business";
 
 const fraunces = Fraunces({
@@ -102,6 +103,7 @@ export default function RootLayout({
         </SmoothScroll>
         <Grain />
         <Toaster />
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
