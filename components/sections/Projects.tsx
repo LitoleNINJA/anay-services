@@ -102,9 +102,21 @@ function ProjectCard({
         sizes="(min-width: 768px) 46vw, 100vw"
         className="object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.06]"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[--color-ink]/70 via-[--color-ink]/5 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-95" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[--color-ink]/30 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-90" />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 backdrop-blur-md md:h-48"
+        style={{
+          backgroundImage:
+            "linear-gradient(to top, rgba(10,10,10,0.55), rgba(10,10,10,0))",
+          maskImage:
+            "linear-gradient(to top, black 55%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to top, black 55%, transparent 100%)",
+        }}
+        aria-hidden
+      />
       <div className="absolute inset-x-0 bottom-0 p-6 text-[--color-bone] md:p-8">
-        <h3 className="font-display text-2xl tracking-tight md:text-3xl">
+        <h3 className="font-display text-2xl tracking-tight drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] md:text-3xl">
           {p.title}
         </h3>
       </div>
