@@ -302,7 +302,10 @@ export const CONTACT = {
   lede:
     "Tell us a little about your space and we'll be back within one business day with next steps.",
   detail: {
-    addressLines: ["Al Quoz Industrial 3", "Dubai, United Arab Emirates"],
+    addressLines: [
+      "274 IDS Group, Al Karama",
+      "Dubai, U.A.E. · P.O. Box 44320",
+    ],
     email: BUSINESS.email,
     phone: BUSINESS.phone,
     phoneHref: BUSINESS.phoneHref,
@@ -313,7 +316,7 @@ export const CONTACT = {
 
 export const FOOTER = {
   wordmark: "Anay",
-  tagline: "Flooring & Fit-Out · UAE",
+  tagline: "We design, you deserve.",
   columns: {
     company: [
       { label: "Work", href: "#work" },

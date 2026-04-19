@@ -1,18 +1,18 @@
 export const BUSINESS = {
   name: "Anay Interior",
-  legalName: "Anay Technical Services LLC",
-  tagline: "Flooring & Fit-Out · UAE",
+  legalName: "Anay Technical Services Co. L.L.C",
+  tagline: "We design, you deserve.",
   description:
     "Premium flooring, finishing and technical fit-out services across the UAE. Carpet, tile, vinyl, LVT, raised floor, gypsum, paint, plaster and MEP.",
   email: "info@anayinterior.com",
-  phone: "+971 50 000 0000",
-  phoneHref: "tel:+971500000000",
-  whatsappHref: "https://wa.me/971500000000",
+  phone: "+971 55 7141 060",
+  phoneHref: "tel:+971557141060",
+  whatsappHref: "https://wa.me/971557141060",
   address: {
-    street: "Al Quoz Industrial 3",
+    street: "274 IDS Group, Al Karama",
     city: "Dubai",
     region: "Dubai",
-    postalCode: "",
+    postalCode: "P.O. Box 44320",
     country: "AE",
   },
   areaServed: [

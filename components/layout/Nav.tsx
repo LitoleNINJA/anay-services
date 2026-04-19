@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -41,11 +42,18 @@ export function Nav() {
       <div className="container-page flex h-16 items-center justify-between md:h-20">
         <Link
           href="#top"
-          className="font-display text-xl tracking-tight text-[--color-ink]"
-          aria-label="Anay Technical Services — home"
+          className="flex items-center"
+          aria-label="Anay Interior — home"
           onClick={() => setOpen(false)}
         >
-          anay<span className="text-[--color-gold]">.</span>
+          <Image
+            src="/logo.png"
+            alt="Anay Interior — We design, you deserve"
+            width={200}
+            height={55}
+            priority
+            className="h-8 w-auto md:h-9"
+          />
         </Link>
 
         <nav
