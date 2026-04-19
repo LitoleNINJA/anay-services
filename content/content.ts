@@ -215,7 +215,7 @@ export const PROCESS = {
 
 export type Project = {
   title: string;
-  category: "Residential" | "Commercial" | "Hospitality" | "Retail";
+  category: "Residential" | "Commercial" | "Hospitality" | "Retail" | "Government";
   location: string;
   scope: string[];
   image: { src: string; alt: string };
@@ -224,70 +224,81 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    title: "Jumeirah Villa Refurbishment",
-    category: "Residential",
-    location: "Dubai",
-    scope: ["LVT", "Gypsum", "Paint"],
+    title: "Al Mahavi Camp",
+    category: "Commercial",
+    location: "Abu Dhabi",
+    scope: ["Gypsum", "Paint", "Electrical"],
     image: {
-      src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
-      alt: "Minimal residential living room with warm wood floor.",
+      src: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
+      alt: "Large-scale commercial interior — placeholder pending client photography.",
     },
     span: "tall",
   },
   {
-    title: "DIFC Trading Floor",
+    title: "Police Headquarters",
+    category: "Government",
+    location: "Abu Dhabi",
+    scope: ["Raised Floor", "Carpet", "Gypsum"],
+    image: {
+      src: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80",
+      alt: "Formal commercial interior — placeholder pending client photography.",
+    },
+    span: "wide",
+  },
+  {
+    title: "SO Hotel",
+    category: "Hospitality",
+    location: "Ras Al Khaimah",
+    scope: ["Carpet", "Plaster", "Paint"],
+    image: {
+      src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80",
+      alt: "Hotel suite with warm finishes — placeholder pending client photography.",
+    },
+    span: "square",
+  },
+  {
+    title: "UAE Olympic Committee",
+    category: "Government",
+    location: "Dubai",
+    scope: ["Carpet", "Gypsum", "Paint"],
+    image: {
+      src: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1600&q=80",
+      alt: "Modern institutional interior — placeholder pending client photography.",
+    },
+    span: "tall",
+  },
+  {
+    title: "DIFC Office",
     category: "Commercial",
     location: "Dubai",
     scope: ["Raised Floor", "Carpet", "Electrical"],
     image: {
-      src: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
-      alt: "Open-plan office with raised floor and clean ceiling grid.",
+      src: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80",
+      alt: "Corporate office interior — placeholder pending client photography.",
     },
     span: "wide",
   },
   {
-    title: "Al Wasl Clinic",
-    category: "Commercial",
+    title: "Villa, Emirates Hills",
+    category: "Residential",
     location: "Dubai",
-    scope: ["Vinyl", "Plastering", "Plumbing"],
+    scope: ["LVT", "Plaster", "Paint"],
     image: {
-      src: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80",
-      alt: "Calm clinic interior with hygienic flooring.",
+      src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
+      alt: "Luxury residential living room — placeholder pending client photography.",
     },
     span: "square",
   },
   {
-    title: "Marina Apartment",
+    title: "Villa, Jumeirah Bay",
     category: "Residential",
-    location: "Dubai Marina",
-    scope: ["Tile", "Paint", "Electrical"],
+    location: "Dubai",
+    scope: ["Tile", "Plaster", "Electrical"],
     image: {
       src: "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1600&q=80",
-      alt: "Modern apartment living space with city views.",
-    },
-    span: "square",
-  },
-  {
-    title: "Boutique Retail — Mall of the Emirates",
-    category: "Retail",
-    location: "Dubai",
-    scope: ["Tile", "Gypsum", "Paint"],
-    image: {
-      src: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=1600&q=80",
-      alt: "Minimal boutique retail interior with stone floor.",
+      alt: "Modern luxury residence with city views — placeholder pending client photography.",
     },
     span: "tall",
-  },
-  {
-    title: "Corniche Hotel Suite Refresh",
-    category: "Hospitality",
-    location: "Abu Dhabi",
-    scope: ["Carpet", "Plaster", "Paint"],
-    image: {
-      src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80",
-      alt: "Hotel suite with warm carpet and neutral finishes.",
-    },
-    span: "wide",
   },
 ];
 
