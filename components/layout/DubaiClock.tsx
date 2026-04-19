@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/cn";
 import { BUSINESS, isOpenNow } from "@/lib/business";
 
+const GOLD = "#C8A96A";
+const MUTED = "#8A8680";
+const INK = "#0A0A0A";
+
 export function DubaiClock({ className }: { className?: string }) {
   const [time, setTime] = useState<string>("");
   const [open, setOpen] = useState<boolean | null>(null);
@@ -48,20 +52,28 @@ export function DubaiClock({ className }: { className?: string }) {
         aria-hidden
       >
         {open && (
-          <span className="absolute inset-0 rounded-full bg-[--color-gold] opacity-75 animate-ping" />
+          <span
+            className="absolute inset-0 rounded-full animate-ping"
+            style={{ backgroundColor: GOLD, opacity: 0.7 }}
+          />
         )}
         <span
-          className={cn(
-            "relative inline-block h-1.5 w-1.5 rounded-full",
-            open ? "bg-[--color-gold]" : "bg-[--color-muted]",
-          )}
+          className="relative inline-block h-1.5 w-1.5 rounded-full"
+          style={{ backgroundColor: open ? GOLD : MUTED }}
         />
       </span>
-      <span className="font-mono text-[--color-ink]/70">DXB</span>
-      <span className="text-[--color-line-strong]" aria-hidden>
+      <span className="font-mono" style={{ color: `${INK}B3` /* 70% */ }}>
+        DXB
+      </span>
+      <span aria-hidden style={{ color: "rgba(10,10,10,0.25)" }}>
         ·
       </span>
-      <span className="font-mono tabular-nums text-[--color-ink]">{time}</span>
+      <span
+        className="font-mono tabular-nums"
+        style={{ color: INK }}
+      >
+        {time}
+      </span>
     </span>
   );
 }
