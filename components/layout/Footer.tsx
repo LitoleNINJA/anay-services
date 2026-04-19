@@ -58,7 +58,7 @@ export function Footer() {
 
         <div className="mt-20">
           <motion.p
-            className="font-display leading-[0.82] text-[clamp(5rem,18vw,15rem)] tracking-[-0.04em]"
+            className="font-display leading-[0.9] text-[clamp(5rem,18vw,15rem)] tracking-[-0.04em] pb-[0.18em]"
             initial={reduced ? {} : { clipPath: "inset(100% 0 0 0)" }}
             whileInView={{ clipPath: "inset(0% 0 0 0)" }}
             viewport={{ once: true, margin: "-10% 0px" }}
