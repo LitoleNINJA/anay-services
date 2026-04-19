@@ -4,38 +4,61 @@ import { motion } from "framer-motion";
 import { useLang } from "@/context/LanguageProvider";
 import { cn } from "@/lib/cn";
 
+const SLOT_W = 44; // px
+
 export function LanguageToggle({ className }: { className?: string }) {
   const { lang, setLang } = useLang();
   const isAr = lang === "ar";
 
   return (
-    <button
-      type="button"
-      onClick={() => setLang(isAr ? "en" : "ar")}
-      aria-label={
-        isAr ? "Switch to English" : "التبديل إلى اللغة العربية"
-      }
+    <div
+      role="group"
+      aria-label="Language"
+      dir="ltr"
       className={cn(
-        "relative inline-flex h-8 items-center rounded-full border border-[--color-line-strong] bg-[--color-bone]/50 p-0.5 text-[11px] tracking-[0.18em] uppercase transition-colors hover:border-[--color-ink]",
+        "relative inline-flex h-9 items-center rounded-full border border-[--color-line-strong] bg-[--color-bone]/70 p-1 backdrop-blur-sm shadow-[0_1px_0_rgba(10,10,10,0.04)]",
         className,
       )}
     >
-      <span className="relative z-10 flex w-8 items-center justify-center font-mono text-[--color-ink]">
-        EN
-      </span>
-      <span
-        className="relative z-10 flex w-8 items-center justify-center font-sans text-[14px] text-[--color-ink]"
-        style={{ fontFeatureSettings: '"ss01"' }}
-      >
-        ع
-      </span>
       <motion.span
         aria-hidden
-        className="absolute inset-y-0.5 w-8 rounded-full bg-[--color-gold]"
+        className="absolute top-1 bottom-1 left-1 rounded-full bg-[--color-ink]"
+        style={{ width: SLOT_W }}
         initial={false}
-        animate={{ x: isAr ? 32 : 0 }}
-        transition={{ type: "spring", stiffness: 320, damping: 28 }}
+        animate={{ x: isAr ? SLOT_W : 0 }}
+        transition={{ type: "spring", stiffness: 380, damping: 32, mass: 0.6 }}
       />
-    </button>
+      <button
+        type="button"
+        onClick={() => setLang("en")}
+        aria-pressed={!isAr}
+        className={cn(
+          "relative z-10 flex h-7 items-center justify-center rounded-full font-mono text-[11px] font-medium tracking-[0.18em] uppercase transition-colors duration-200",
+          !isAr
+            ? "text-[--color-bone]"
+            : "text-[--color-muted] hover:text-[--color-ink]",
+        )}
+        style={{ width: SLOT_W }}
+      >
+        EN
+      </button>
+      <button
+        type="button"
+        onClick={() => setLang("ar")}
+        aria-pressed={isAr}
+        className={cn(
+          "relative z-10 flex h-7 items-center justify-center rounded-full text-[15px] leading-none transition-colors duration-200",
+          isAr
+            ? "text-[--color-bone]"
+            : "text-[--color-muted] hover:text-[--color-ink]",
+        )}
+        style={{
+          width: SLOT_W,
+          fontFamily: "var(--font-cairo, sans-serif)",
+        }}
+      >
+        ع
+      </button>
+    </div>
   );
 }
