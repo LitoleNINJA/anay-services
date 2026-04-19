@@ -16,7 +16,7 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="container-page py-24 md:py-40">
+    <section id="contact" className="container-page py-20 md:py-32">
       <div className="grid gap-16 md:grid-cols-12 md:gap-12">
         <div className="md:col-span-5">
           <SectionHeader

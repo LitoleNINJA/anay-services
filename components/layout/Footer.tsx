@@ -31,9 +31,9 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative mt-24 overflow-hidden bg-[--color-ink] text-[--color-bone]">
-      <div className="container-page pt-24 pb-12">
-        <div className="grid gap-16 md:grid-cols-12">
+    <footer className="relative overflow-hidden bg-[--color-ink] text-[--color-bone]">
+      <div className="container-page pt-16 pb-10 md:pt-24 md:pb-12">
+        <div className="grid gap-10 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-5">
             <p className="text-sm text-[--color-bone-2]/70">{t.footer.tagline}</p>
             <p className="mt-6 max-w-sm text-lg leading-relaxed">
@@ -76,7 +76,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-20">
+        <div className="mt-14 md:mt-20">
           <motion.p
             className="font-display leading-[0.9] text-[clamp(5rem,18vw,15rem)] tracking-[-0.04em] pb-[0.18em]"
             initial={reduced ? {} : { clipPath: "inset(100% 0 0 0)" }}
