@@ -24,7 +24,7 @@ const inter = Inter({
 });
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://anayservices.com";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.anayinterior.com";
 
 export const viewport: Viewport = {
   themeColor: "#0A0A0A",

@@ -1,10 +1,10 @@
 export const BUSINESS = {
-  name: "Anay Technical Services",
+  name: "Anay Interior",
   legalName: "Anay Technical Services LLC",
   tagline: "Flooring & Fit-Out · UAE",
   description:
     "Premium flooring, finishing and technical fit-out services across the UAE. Carpet, tile, vinyl, LVT, raised floor, gypsum, paint, plaster and MEP.",
-  email: "info@anayservices.com",
+  email: "info@anayinterior.com",
   phone: "+971 50 000 0000",
   phoneHref: "tel:+971500000000",
   whatsappHref: "https://wa.me/971500000000",
