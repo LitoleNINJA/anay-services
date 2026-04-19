@@ -102,26 +102,11 @@ function ProjectCard({
         sizes="(min-width: 768px) 46vw, 100vw"
         className="object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.06]"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[--color-ink]/75 via-[--color-ink]/10 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-95" />
-      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6 text-[--color-bone] md:p-8">
-        <div className="min-w-0">
-          <p className="text-[11px] uppercase tracking-[0.22em] text-[--color-bone-2]/80">
-            {p.category} · {p.location}
-          </p>
-          <h3 className="mt-3 font-display text-2xl tracking-tight md:text-3xl">
-            {p.title}
-          </h3>
-        </div>
-        <ul className="hidden shrink-0 flex-wrap items-end justify-end gap-2 md:flex">
-          {p.scope.map((s) => (
-            <li
-              key={s}
-              className="rounded-full border border-white/25 px-3 py-1 text-[11px] tracking-wide text-[--color-bone-2]/90 backdrop-blur-sm"
-            >
-              {s}
-            </li>
-          ))}
-        </ul>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[--color-ink]/70 via-[--color-ink]/5 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-95" />
+      <div className="absolute inset-x-0 bottom-0 p-6 text-[--color-bone] md:p-8">
+        <h3 className="font-display text-2xl tracking-tight md:text-3xl">
+          {p.title}
+        </h3>
       </div>
     </motion.article>
   );

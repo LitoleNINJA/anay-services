@@ -215,88 +215,64 @@ export const PROCESS = {
 
 export type Project = {
   title: string;
-  category: "Residential" | "Commercial" | "Hospitality" | "Retail" | "Government";
-  location: string;
-  scope: string[];
   image: { src: string; alt: string };
   span: "tall" | "wide" | "square";
 };
 
 export const PROJECTS: Project[] = [
   {
-    title: "Al Mahavi Camp",
-    category: "Commercial",
-    location: "Abu Dhabi",
-    scope: ["Gypsum", "Paint", "Electrical"],
+    title: "Al Mahavi Camp, Abu Dhabi",
     image: {
       src: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80",
-      alt: "Large-scale commercial interior — placeholder pending client photography.",
+      alt: "Al Mahavi Camp, Abu Dhabi",
     },
     span: "tall",
   },
   {
-    title: "Police Headquarters",
-    category: "Government",
-    location: "Abu Dhabi",
-    scope: ["Raised Floor", "Carpet", "Gypsum"],
+    title: "Police Headquarters, Abu Dhabi",
     image: {
       src: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80",
-      alt: "Formal commercial interior — placeholder pending client photography.",
+      alt: "Police Headquarters, Abu Dhabi",
     },
     span: "wide",
   },
   {
-    title: "SO Hotel",
-    category: "Hospitality",
-    location: "Ras Al Khaimah",
-    scope: ["Carpet", "Plaster", "Paint"],
+    title: "SO Hotel, Ras Al Khaimah",
     image: {
       src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80",
-      alt: "Hotel suite with warm finishes — placeholder pending client photography.",
+      alt: "SO Hotel, Ras Al Khaimah",
     },
     span: "square",
   },
   {
-    title: "UAE Olympic Committee",
-    category: "Government",
-    location: "Dubai",
-    scope: ["Carpet", "Gypsum", "Paint"],
+    title: "UAE Olympic Committee, Dubai",
     image: {
       src: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1600&q=80",
-      alt: "Modern institutional interior — placeholder pending client photography.",
+      alt: "UAE Olympic Committee, Dubai",
     },
     span: "tall",
   },
   {
-    title: "DIFC Office",
-    category: "Commercial",
-    location: "Dubai",
-    scope: ["Raised Floor", "Carpet", "Electrical"],
+    title: "DIFC, Dubai",
     image: {
       src: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80",
-      alt: "Corporate office interior — placeholder pending client photography.",
+      alt: "DIFC, Dubai",
     },
     span: "wide",
   },
   {
     title: "Villa, Emirates Hills",
-    category: "Residential",
-    location: "Dubai",
-    scope: ["LVT", "Plaster", "Paint"],
     image: {
       src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
-      alt: "Luxury residential living room — placeholder pending client photography.",
+      alt: "Villa, Emirates Hills",
     },
     span: "square",
   },
   {
     title: "Villa, Jumeirah Bay",
-    category: "Residential",
-    location: "Dubai",
-    scope: ["Tile", "Plaster", "Electrical"],
     image: {
       src: "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1600&q=80",
-      alt: "Modern luxury residence with city views — placeholder pending client photography.",
+      alt: "Villa, Jumeirah Bay",
     },
     span: "tall",
   },
