@@ -47,12 +47,12 @@ export function Nav() {
           onClick={() => setOpen(false)}
         >
           <Image
-            src="/logo.png"
+            src="/logo_bg_removed.png"
             alt="Anay Interior — We design, you deserve"
             width={1536}
             height={1024}
             priority
-            className="h-12 w-auto mix-blend-multiply md:h-14"
+            className="h-12 w-auto md:h-14"
           />
         </Link>
 
