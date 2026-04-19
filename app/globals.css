@@ -32,6 +32,18 @@
   --shadow-soft: 0 1px 0 rgba(10, 10, 10, 0.04), 0 12px 32px -16px rgba(10, 10, 10, 0.18);
 }
 
+:root {
+  --color-ink: #0A0A0A;
+  --color-ink-2: #141414;
+  --color-bone: #F7F5F0;
+  --color-bone-2: #EFEBE1;
+  --color-gold: #C8A96A;
+  --color-gold-2: #B8975A;
+  --color-muted: #8A8680;
+  --color-line: rgba(10, 10, 10, 0.12);
+  --color-line-strong: rgba(10, 10, 10, 0.22);
+}
+
 @layer base {
   html {
     scroll-behavior: auto;

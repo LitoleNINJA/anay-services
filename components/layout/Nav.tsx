@@ -100,7 +100,8 @@ export function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 top-0 z-40 bg-[--color-bone] md:hidden"
+            className="fixed inset-0 top-0 z-40 md:hidden"
+            style={{ backgroundColor: "#F7F5F0" }}
             initial={reduced ? { opacity: 0 } : { opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduced ? { opacity: 0 } : { opacity: 0, y: -12 }}
