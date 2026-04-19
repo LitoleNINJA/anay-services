@@ -71,74 +71,30 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   {
-    id: "carpet",
+    id: "civil",
     index: "01",
-    title: "Carpet",
+    title: "Civil",
     blurb:
-      "Broadloom and tile carpet for offices, hospitality and residential — tensioned, seamed and detailed to spec.",
+      "Plastering, wall tiling, engraving and the wet-trade foundations — flat, square walls ready for any finish.",
     image: {
-      src: "https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?auto=format&fit=crop&w=1200&q=80",
-      alt: "Detail of a plush neutral carpet.",
+      src: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1200&q=80",
+      alt: "Plasterer finishing a smooth wall on site.",
     },
   },
   {
-    id: "tile",
+    id: "flooring",
     index: "02",
-    title: "Tile",
+    title: "Flooring",
     blurb:
-      "Porcelain, ceramic, stone and marble — thin-bed, mortar-bed and levelled substrates for a flat, lasting floor.",
+      "Carpet, tile, vinyl, LVT, raised floor and wood — tensioned, welded, levelled and detailed to specification.",
     image: {
-      src: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80",
-      alt: "Large-format tile floor in a neutral interior.",
-    },
-  },
-  {
-    id: "vinyl",
-    index: "03",
-    title: "Vinyl",
-    blurb:
-      "Homogeneous and heterogeneous sheet vinyl — welded seams, coved skirtings and hygienic finishes for clinics, schools and kitchens.",
-    image: {
-      src: "https://images.unsplash.com/photo-1615875605825-5eb9bb5d52ac?auto=format&fit=crop&w=1200&q=80",
-      alt: "Sheet vinyl flooring in a clean interior.",
-    },
-  },
-  {
-    id: "lvt",
-    index: "04",
-    title: "LVT",
-    blurb:
-      "Glue-down and click LVT — warm, silent and hard-wearing. Commercial-grade planks in oak, walnut and stone looks.",
-    image: {
-      src: "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=1200&q=80",
-      alt: "LVT plank flooring with warm tone.",
-    },
-  },
-  {
-    id: "raised-floor",
-    index: "05",
-    title: "Raised Floor",
-    blurb:
-      "Pedestal and stringer systems for data centres and trading floors — load-rated, levelled and finished to match.",
-    image: {
-      src: "https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&w=1200&q=80",
-      alt: "Raised office floor under construction.",
-    },
-  },
-  {
-    id: "gypsum",
-    index: "06",
-    title: "Gypsum",
-    blurb:
-      "Partitions, bulkheads and decorative ceilings — single and double-layer with acoustic, fire and moisture options.",
-    image: {
-      src: "https://images.unsplash.com/photo-1503174971373-b1f69850bded?auto=format&fit=crop&w=1200&q=80",
-      alt: "Gypsum ceiling detail.",
+      src: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80",
+      alt: "Close-up of craftsman hands laying timber flooring.",
     },
   },
   {
     id: "paint",
-    index: "07",
+    index: "03",
     title: "Paint",
     blurb:
       "Low-VOC emulsions, lacquers and specialist finishes — prep-led, cleanly cut and inspected at every coat.",
@@ -148,19 +104,8 @@ export const SERVICES: Service[] = [
     },
   },
   {
-    id: "plastering",
-    index: "08",
-    title: "Plastering",
-    blurb:
-      "Skim, float and sand, traditional lime and decorative Venetian finishes — flat walls ready for any paint or wallcovering.",
-    image: {
-      src: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1200&q=80",
-      alt: "Plasterer at work on a smooth wall.",
-    },
-  },
-  {
     id: "electrical",
-    index: "09",
+    index: "04",
     title: "Electrical",
     blurb:
       "DEWA-approved contractors for lighting, power and low-voltage — designed, installed, tested and handed over.",
@@ -171,13 +116,24 @@ export const SERVICES: Service[] = [
   },
   {
     id: "plumbing",
-    index: "10",
+    index: "05",
     title: "Plumbing",
     blurb:
       "Hot and cold, drainage, pumps and fixtures — pressure-tested, concealed where it should be, serviceable where it counts.",
     image: {
       src: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80",
       alt: "Detail of plumbing fixtures in a finished bathroom.",
+    },
+  },
+  {
+    id: "gypsum",
+    index: "06",
+    title: "Gypsum",
+    blurb:
+      "False ceilings, light partitions and decorative bulkheads — single and double-layer with acoustic, fire and moisture options.",
+    image: {
+      src: "https://images.unsplash.com/photo-1503174971373-b1f69850bded?auto=format&fit=crop&w=1200&q=80",
+      alt: "Gypsum ceiling detail.",
     },
   },
 ];

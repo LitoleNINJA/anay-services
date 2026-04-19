@@ -1,16 +1,12 @@
 import { z } from "zod";
 
 export const SERVICE_OPTIONS = [
-  "Carpet",
-  "Tile",
-  "Vinyl",
-  "LVT",
-  "Raised Floor",
-  "Gypsum",
+  "Civil",
+  "Flooring",
   "Paint",
-  "Plastering",
   "Electrical",
   "Plumbing",
+  "Gypsum",
   "Other",
 ] as const;
 

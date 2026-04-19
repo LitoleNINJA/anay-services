@@ -15,7 +15,7 @@ export function Services() {
       <SectionHeader
         eyebrow="Services"
         heading={"Everything the\nspace needs."}
-        lede="A single, accountable team for floors, finishes and the works behind the walls — carpet, tile, vinyl, LVT, raised floor, gypsum, paint, plaster, electrical and plumbing."
+        lede="A single, accountable team for civil, flooring, paint, electrical, plumbing and gypsum — every trade a complete fit-out needs, under one roof."
       />
 
       <div className="mt-16 grid gap-10 md:mt-24 md:grid-cols-12 md:gap-12">
@@ -30,18 +30,18 @@ export function Services() {
                 >
                   <button
                     type="button"
-                    className="flex w-full items-baseline justify-between gap-6 py-6 text-left transition-[transform,color] duration-500 md:py-8 group-hover:translate-x-2 md:group-hover:translate-x-3"
+                    className="flex w-full flex-col gap-3 py-6 text-left transition-[transform,color] duration-500 md:flex-row md:items-baseline md:justify-between md:gap-6 md:py-8 group-hover:translate-x-1 md:group-hover:translate-x-3"
                     aria-label={`Preview ${s.title}`}
                   >
-                    <span className="flex items-baseline gap-6">
-                      <span className="font-mono text-xs tracking-[0.22em] text-[--color-muted] md:text-sm">
+                    <span className="flex items-baseline gap-4 md:gap-6">
+                      <span className="font-mono text-[11px] tracking-[0.22em] text-[--color-muted] md:text-sm">
                         {s.index}
                       </span>
-                      <span className="font-display text-3xl tracking-tight text-[--color-ink] md:text-5xl">
+                      <span className="font-display text-[2rem] leading-none tracking-tight text-[--color-ink] md:text-5xl">
                         {s.title}
                       </span>
                     </span>
-                    <span className="max-w-xs text-right text-xs text-[--color-muted] md:text-sm">
+                    <span className="max-w-sm pl-[2.25rem] text-[13px] leading-relaxed text-[--color-muted] md:max-w-xs md:pl-0 md:text-right md:text-sm">
                       {s.blurb}
                     </span>
                   </button>
