@@ -49,10 +49,10 @@ export function Nav() {
           <Image
             src="/logo.png"
             alt="Anay Interior — We design, you deserve"
-            width={200}
-            height={55}
+            width={1536}
+            height={1024}
             priority
-            className="h-8 w-auto md:h-9"
+            className="h-12 w-auto mix-blend-multiply md:h-14"
           />
         </Link>
 
