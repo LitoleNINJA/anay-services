@@ -13,6 +13,7 @@
 
   --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: var(--font-cairo), "Segoe UI", Tahoma, sans-serif;
 
   --text-display: clamp(3rem, 9vw, 8rem);
   --text-mega: clamp(4.5rem, 14vw, 14rem);
@@ -59,6 +60,15 @@
   .font-display {
     font-family: var(--font-display);
     font-feature-settings: "ss01", "ss02";
+  }
+
+  html[dir="rtl"] body,
+  html[dir="rtl"] .font-display {
+    font-family: var(--font-arabic);
+    letter-spacing: normal;
+  }
+  html[dir="rtl"] .font-mono {
+    font-family: var(--font-arabic);
   }
 
   .text-stroke {

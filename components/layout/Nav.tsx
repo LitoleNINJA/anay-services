@@ -6,15 +6,17 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
-import { NAV_LINKS } from "@/content/content";
 import { LinkButton } from "@/components/ui/Button";
 import { Magnetic } from "@/components/ui/Magnetic";
+import { LanguageToggle } from "@/components/ui/LanguageToggle";
+import { useLang } from "@/context/LanguageProvider";
 import { DubaiClock } from "./DubaiClock";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const reduced = useReducedMotion();
+  const { t } = useLang();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -60,7 +62,7 @@ export function Nav() {
           className="hidden items-center gap-8 md:flex"
           aria-label="Primary"
         >
-          {NAV_LINKS.map((l) => (
+          {t.nav.map((l) => (
             <Link
               key={l.href}
               href={l.href}
@@ -71,24 +73,28 @@ export function Nav() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-5 md:flex">
+        <div className="hidden items-center gap-4 md:flex">
           <DubaiClock />
+          <LanguageToggle />
           <Magnetic strength={0.35}>
             <LinkButton href="#contact" variant="primary" size="sm">
-              Get a quote
+              {t.cta.getQuote}
             </LinkButton>
           </Magnetic>
         </div>
 
-        <button
-          type="button"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          className="relative z-[60] md:hidden p-2 -mr-2 text-[--color-ink]"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <LanguageToggle />
+          <button
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            className="relative z-[60] p-2 -mr-2 text-[--color-ink]"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -102,7 +108,7 @@ export function Nav() {
           >
             <div className="container-page flex h-full flex-col justify-between pt-24 pb-10">
               <ul className="flex flex-col gap-3">
-                {NAV_LINKS.map((l, i) => (
+                {t.nav.map((l, i) => (
                   <motion.li
                     key={l.href}
                     initial={reduced ? {} : { opacity: 0, y: 16 }}
@@ -132,7 +138,7 @@ export function Nav() {
                   className="self-start"
                   onClick={() => setOpen(false)}
                 >
-                  Get a quote
+                  {t.cta.getQuote}
                 </LinkButton>
               </div>
             </div>

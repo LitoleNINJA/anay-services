@@ -9,12 +9,20 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { PROJECTS } from "@/content/content";
+import { useLang } from "@/context/LanguageProvider";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { cn } from "@/lib/cn";
+
+type MergedProject = {
+  title: string;
+  image: { src: string; alt: string };
+  span: "tall" | "wide" | "square";
+};
 
 export function Projects() {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const { t } = useLang();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -31,15 +39,21 @@ export function Projects() {
     [reduced ? 0 : -40, reduced ? 0 : 80],
   );
 
-  const left = PROJECTS.filter((_, i) => i % 2 === 0);
-  const right = PROJECTS.filter((_, i) => i % 2 === 1);
+  const items: MergedProject[] = t.projects.items.map((p, i) => ({
+    title: p.title,
+    image: PROJECTS[i]?.image ?? PROJECTS[0].image,
+    span: PROJECTS[i]?.span ?? "square",
+  }));
+
+  const left = items.filter((_, i) => i % 2 === 0);
+  const right = items.filter((_, i) => i % 2 === 1);
 
   return (
     <section id="work" className="container-page py-24 md:py-40">
       <SectionHeader
-        eyebrow="Selected work"
-        heading={"A small, careful\nbody of work."}
-        lede="Residential, commercial, retail and hospitality across Dubai and Abu Dhabi. Select projects — a fuller portfolio available on request."
+        eyebrow={t.projects.eyebrow}
+        heading={t.projects.heading}
+        lede={t.projects.lede}
       />
 
       <div ref={ref} className="mt-16 md:mt-24">
@@ -70,7 +84,7 @@ function ProjectCard({
   project: p,
   index,
 }: {
-  project: (typeof PROJECTS)[number];
+  project: MergedProject;
   index: number;
 }) {
   const aspect =

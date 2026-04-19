@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { useRef } from "react";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { HERO } from "@/content/content";
+import { useLang } from "@/context/LanguageProvider";
 import { RevealText } from "@/components/ui/RevealText";
 import { LinkButton } from "@/components/ui/Button";
 import { Magnetic } from "@/components/ui/Magnetic";
@@ -13,6 +14,7 @@ import { Magnetic } from "@/components/ui/Magnetic";
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
+  const { t, lang } = useLang();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -35,13 +37,14 @@ export function Hero() {
             className="mb-8 flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-[--color-muted]"
           >
             <span className="h-px w-10 bg-[--color-gold]" aria-hidden />
-            {HERO.eyebrow}
+            {t.hero.eyebrow}
           </motion.p>
 
           <RevealText
-            lines={HERO.headingLines}
+            key={lang}
+            lines={t.hero.headingLines}
             as="h1"
-            className="text-[--color-ink] text-[clamp(3rem,9vw,8rem)] tracking-[-0.03em]"
+            className="text-[--color-ink] text-[clamp(2.75rem,9vw,8rem)] tracking-[-0.03em]"
             delay={0.15}
           />
 
@@ -51,7 +54,7 @@ export function Hero() {
             transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1], delay: 0.9 }}
             className="mt-8 max-w-xl text-lg leading-relaxed text-[--color-muted]"
           >
-            {HERO.lede}
+            {t.hero.lede}
           </motion.p>
 
           <motion.div
@@ -61,13 +64,21 @@ export function Hero() {
             className="mt-10 flex flex-wrap items-center gap-3"
           >
             <Magnetic strength={0.32}>
-              <LinkButton href={HERO.primaryCta.href} variant="primary" size="lg">
-                {HERO.primaryCta.label}
+              <LinkButton
+                href={t.hero.primaryCta.href}
+                variant="primary"
+                size="lg"
+              >
+                {t.hero.primaryCta.label}
                 <ArrowUpRight size={16} strokeWidth={1.6} />
               </LinkButton>
             </Magnetic>
-            <LinkButton href={HERO.secondaryCta.href} variant="outline" size="lg">
-              {HERO.secondaryCta.label}
+            <LinkButton
+              href={t.hero.secondaryCta.href}
+              variant="outline"
+              size="lg"
+            >
+              {t.hero.secondaryCta.label}
             </LinkButton>
           </motion.div>
         </div>

@@ -1,14 +1,17 @@
-import { STATS, TRUSTED_BY } from "@/content/content";
+"use client";
+
+import { useLang } from "@/context/LanguageProvider";
 import { Counter } from "@/components/ui/Counter";
 import { FadeUp } from "@/components/ui/FadeUp";
 
 export function Stats() {
-  const doubled = [...TRUSTED_BY, ...TRUSTED_BY];
+  const { t } = useLang();
+  const doubled = [...t.stats.logos, ...t.stats.logos];
   return (
     <section className="border-y border-[--color-line] bg-[--color-ink] text-[--color-bone]">
       <div className="container-page py-20 md:py-28">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-4 md:gap-8">
-          {STATS.map((s, i) => (
+          {t.stats.items.map((s, i) => (
             <FadeUp key={s.label} delay={i * 0.05}>
               <div>
                 <p className="font-display text-5xl tracking-tight text-[--color-gold] md:text-7xl">
@@ -24,7 +27,7 @@ export function Stats() {
 
         <div className="mt-16 border-t border-white/10 pt-10">
           <p className="text-center text-[11px] uppercase tracking-[0.22em] text-[--color-bone-2]/60">
-            Trusted by
+            {t.stats.trustedBy}
           </p>
           <div className="mt-6 overflow-hidden">
             <div className="marquee-track gap-14 whitespace-nowrap">

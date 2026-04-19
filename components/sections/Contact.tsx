@@ -1,23 +1,34 @@
-import { CONTACT } from "@/content/content";
+"use client";
+
+import { useLang } from "@/context/LanguageProvider";
+import { BUSINESS } from "@/lib/business";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { FadeUp } from "@/components/ui/FadeUp";
 
 export function Contact() {
+  const { t } = useLang();
+  const c = t.contact;
+
+  const addressLines = [
+    "274 IDS Group, Al Karama",
+    "Dubai, U.A.E. · P.O. Box 44320",
+  ];
+
   return (
     <section id="contact" className="container-page py-24 md:py-40">
       <div className="grid gap-16 md:grid-cols-12 md:gap-12">
         <div className="md:col-span-5">
           <SectionHeader
-            eyebrow={CONTACT.eyebrow}
-            heading={CONTACT.heading}
-            lede={CONTACT.lede}
+            eyebrow={c.eyebrow}
+            heading={c.heading}
+            lede={c.lede}
           />
 
           <dl className="mt-12 space-y-6 text-sm">
             <FadeUp delay={0.05}>
-              <Detail label="Studio">
-                {CONTACT.detail.addressLines.map((l) => (
+              <Detail label={c.labels.studio}>
+                {addressLines.map((l) => (
                   <span key={l} className="block">
                     {l}
                   </span>
@@ -25,36 +36,37 @@ export function Contact() {
               </Detail>
             </FadeUp>
             <FadeUp delay={0.1}>
-              <Detail label="Email">
+              <Detail label={c.labels.email}>
                 <a
-                  href={`mailto:${CONTACT.detail.email}`}
+                  href={`mailto:${BUSINESS.email}`}
                   className="underline-offset-4 hover:underline"
                 >
-                  {CONTACT.detail.email}
+                  {BUSINESS.email}
                 </a>
               </Detail>
             </FadeUp>
             <FadeUp delay={0.15}>
-              <Detail label="Phone">
+              <Detail label={c.labels.phone}>
                 <a
-                  href={CONTACT.detail.phoneHref}
+                  href={BUSINESS.phoneHref}
                   className="underline-offset-4 hover:underline"
+                  dir="ltr"
                 >
-                  {CONTACT.detail.phone}
+                  {BUSINESS.phone}
                 </a>
                 {" · "}
                 <a
-                  href={CONTACT.detail.whatsappHref}
+                  href={BUSINESS.whatsappHref}
                   target="_blank"
                   rel="noreferrer noopener"
                   className="underline-offset-4 hover:underline"
                 >
-                  WhatsApp
+                  {c.labels.whatsapp}
                 </a>
               </Detail>
             </FadeUp>
             <FadeUp delay={0.2}>
-              <Detail label="Hours">{CONTACT.detail.hours}</Detail>
+              <Detail label={c.labels.hours}>{BUSINESS.hours.displayHours}</Detail>
             </FadeUp>
           </dl>
         </div>

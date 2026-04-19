@@ -1,7 +1,10 @@
-import { SERVICES } from "@/content/content";
+"use client";
+
+import { useLang } from "@/context/LanguageProvider";
 
 export function Marquee() {
-  const items = SERVICES.map((s) => s.title);
+  const { t } = useLang();
+  const items = t.services.items.map((s) => s.title);
   const doubled = [...items, ...items];
   return (
     <section

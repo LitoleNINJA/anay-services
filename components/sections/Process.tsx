@@ -2,12 +2,13 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { PROCESS } from "@/content/content";
+import { useLang } from "@/context/LanguageProvider";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function Process() {
   const ref = useRef<HTMLDivElement>(null);
+  const { t } = useLang();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -21,9 +22,9 @@ export function Process() {
     >
       <div className="container-page py-24 md:py-40">
         <SectionHeader
-          eyebrow={PROCESS.eyebrow}
-          heading={PROCESS.heading}
-          lede="A clear, repeatable programme — small enough to stay personal, disciplined enough to run on schedule."
+          eyebrow={t.process.eyebrow}
+          heading={t.process.heading}
+          lede={t.process.lede}
         />
 
         <div ref={ref} className="relative mt-16 md:mt-24">
@@ -33,7 +34,7 @@ export function Process() {
             className="absolute left-6 top-0 h-full w-px origin-top bg-[--color-gold] md:left-[calc(50%-0.5px)]"
           />
           <ol className="relative space-y-16 md:space-y-28">
-            {PROCESS.steps.map((step, i) => (
+            {t.process.steps.map((step, i) => (
               <li
                 key={step.index}
                 className={

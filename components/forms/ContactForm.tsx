@@ -13,11 +13,14 @@ import {
 } from "@/lib/validations";
 import { submitContact, type ContactState } from "@/app/actions/contact";
 import { cn } from "@/lib/cn";
+import { useLang } from "@/context/LanguageProvider";
 import { Magnetic } from "@/components/ui/Magnetic";
 
 const initialState: ContactState = { status: "idle" };
 
 export function ContactForm() {
+  const { t } = useLang();
+  const f = t.contact.form;
   const [state, formAction, isPending] = useActionState(
     submitContact,
     initialState,
@@ -45,11 +48,11 @@ export function ContactForm() {
 
   useEffect(() => {
     if (state.status === "success") {
-      toast.success("Thanks — we'll reply within one business day.");
+      toast.success(f.successToast);
       reset();
       setServiceValue("");
     } else if (state.status === "error") {
-      toast.error(state.message);
+      toast.error(state.message || f.errorToast);
       if (state.fieldErrors) {
         for (const [field, msgs] of Object.entries(state.fieldErrors)) {
           if (msgs && msgs[0]) {
@@ -58,7 +61,7 @@ export function ContactForm() {
         }
       }
     }
-  }, [state, reset, setError]);
+  }, [state, reset, setError, f]);
 
   const onSubmit = handleSubmit(() => {
     if (!formRef.current) return;
@@ -75,7 +78,7 @@ export function ContactForm() {
     >
       <div className="grid gap-6 md:grid-cols-2">
         <Field
-          label="Your name"
+          label={f.name}
           error={errors.name?.message}
           input={
             <input
@@ -83,12 +86,12 @@ export function ContactForm() {
               autoComplete="name"
               {...register("name")}
               className={inputCx}
-              placeholder="Full name"
+              placeholder={f.namePlaceholder}
             />
           }
         />
         <Field
-          label="Email"
+          label={f.email}
           error={errors.email?.message}
           input={
             <input
@@ -96,7 +99,7 @@ export function ContactForm() {
               autoComplete="email"
               {...register("email")}
               className={inputCx}
-              placeholder="you@example.com"
+              placeholder={f.emailPlaceholder}
             />
           }
         />
@@ -104,8 +107,8 @@ export function ContactForm() {
 
       <div className="grid gap-6 md:grid-cols-2">
         <Field
-          label="Phone"
-          hint="Optional"
+          label={f.phone}
+          hint={f.phoneHint}
           error={errors.phone?.message}
           input={
             <input
@@ -113,12 +116,13 @@ export function ContactForm() {
               autoComplete="tel"
               {...register("phone")}
               className={inputCx}
-              placeholder="+971 …"
+              placeholder={f.phonePlaceholder}
+              dir="ltr"
             />
           }
         />
         <Field
-          label="Service"
+          label={f.service}
           error={errors.service?.message}
           input={
             <select
@@ -132,11 +136,11 @@ export function ContactForm() {
               defaultValue=""
             >
               <option value="" disabled>
-                Choose a service
+                {f.serviceChoose}
               </option>
               {SERVICE_OPTIONS.map((s) => (
                 <option key={s} value={s} className="text-[--color-ink]">
-                  {s}
+                  {t.services_enum[s] ?? s}
                 </option>
               ))}
             </select>
@@ -145,14 +149,14 @@ export function ContactForm() {
       </div>
 
       <Field
-        label="Project details"
+        label={f.message}
         error={errors.message?.message}
         input={
           <textarea
             rows={5}
             {...register("message")}
             className={cn(inputCx, "resize-y min-h-[120px]")}
-            placeholder="Briefly: what, where, and roughly when."
+            placeholder={f.messagePlaceholder}
           />
         }
       />
@@ -180,11 +184,11 @@ export function ContactForm() {
         >
           {isPending ? (
             <>
-              <Spinner /> Sending
+              <Spinner /> {f.submitting}
             </>
           ) : (
             <>
-              Send enquiry
+              {f.submit}
               <ArrowUpRight
                 size={16}
                 strokeWidth={1.6}
@@ -195,10 +199,7 @@ export function ContactForm() {
         </motion.button>
       </Magnetic>
 
-      <p className="text-xs text-[--color-muted]">
-        By sending this form you agree we may contact you about your enquiry.
-        We never share your details.
-      </p>
+      <p className="text-xs text-[--color-muted]">{f.legalNote}</p>
     </form>
   );
 }

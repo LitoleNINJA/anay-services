@@ -9,10 +9,13 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { ABOUT } from "@/content/content";
+import { useLang } from "@/context/LanguageProvider";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { RevealTextInView } from "@/components/ui/RevealText";
 
 export function About() {
+  const { t, lang } = useLang();
+  const a = t.about;
   return (
     <section id="about" className="container-page py-24 md:py-40">
       <div className="grid gap-16 md:grid-cols-12 md:gap-10">
@@ -21,16 +24,17 @@ export function About() {
             <FadeUp>
               <p className="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-[--color-muted]">
                 <span className="h-px w-8 bg-[--color-gold]" aria-hidden />
-                {ABOUT.eyebrow}
+                {a.eyebrow}
               </p>
             </FadeUp>
             <RevealTextInView
-              lines={ABOUT.heading.split("\n")}
+              key={lang + "-heading"}
+              lines={a.heading.split("\n")}
               as="h2"
               className="text-[--color-ink] text-4xl tracking-[-0.02em] md:text-6xl"
             />
             <div className="mt-8 space-y-5 text-lg leading-relaxed text-[--color-muted]">
-              {ABOUT.body.map((p, i) => (
+              {a.body.map((p, i) => (
                 <FadeUp key={i} delay={0.1 + i * 0.05}>
                   <p>{p}</p>
                 </FadeUp>
@@ -38,7 +42,7 @@ export function About() {
             </div>
 
             <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8">
-              {ABOUT.pillars.map((p, i) => (
+              {a.pillars.map((p, i) => (
                 <FadeUp key={p.title} delay={0.2 + i * 0.05}>
                   <div>
                     <dt className="font-display text-xl tracking-tight text-[--color-ink]">

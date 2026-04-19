@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Fraunces, Inter, Cairo } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Nav } from "@/components/layout/Nav";
@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/Toaster";
 import { Grain } from "@/components/ui/Grain";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import { LanguageProvider } from "@/context/LanguageProvider";
 import { BUSINESS, buildLocalBusinessJsonLd } from "@/lib/business";
 
 const fraunces = Fraunces({
@@ -20,6 +21,12 @@ const fraunces = Fraunces({
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
+  variable: "--font-cairo",
   display: "swap",
 });
 
@@ -81,7 +88,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} h-full`}
+      className={`${fraunces.variable} ${inter.variable} ${cairo.variable} h-full`}
       suppressHydrationWarning
     >
       <body className="min-h-full bg-[--color-bone] text-[--color-ink] antialiased">
@@ -95,13 +102,15 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <SmoothScroll>
-          <Nav />
-          <main>{children}</main>
-          <Footer />
-        </SmoothScroll>
-        <Grain />
-        <Toaster />
+        <LanguageProvider>
+          <SmoothScroll>
+            <Nav />
+            <main>{children}</main>
+            <Footer />
+          </SmoothScroll>
+          <Grain />
+          <Toaster />
+        </LanguageProvider>
         <Analytics />
         <SpeedInsights />
       </body>
