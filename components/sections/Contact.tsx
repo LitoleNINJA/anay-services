@@ -17,7 +17,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="container-page py-20 md:py-32">
-      <div className="grid gap-16 md:grid-cols-12 md:gap-12">
+      <div className="grid gap-12 md:grid-cols-12 md:gap-12">
         <div className="md:col-span-5">
           <SectionHeader
             eyebrow={c.eyebrow}
@@ -87,7 +87,7 @@ function Detail({
   children: React.ReactNode;
 }) {
   return (
-    <div className="grid grid-cols-[7rem_1fr] gap-6 border-t border-[--color-line] pt-5">
+    <div className="grid grid-cols-[5rem_1fr] gap-4 border-t border-[--color-line] pt-5 md:grid-cols-[7rem_1fr] md:gap-6">
       <dt className="text-[11px] uppercase tracking-[0.22em] text-[--color-muted]">
         {label}
       </dt>

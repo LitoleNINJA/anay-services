@@ -26,7 +26,7 @@ export function Hero() {
     <section
       id="top"
       ref={ref}
-      className="relative isolate flex min-h-[100svh] items-end overflow-hidden pt-28 pb-16 md:pb-24"
+      className="relative isolate flex min-h-[100svh] items-end overflow-hidden pt-24 pb-12 md:pt-28 md:pb-24"
     >
       <div className="container-page relative z-10 grid w-full grid-cols-1 items-end gap-12 md:grid-cols-12">
         <div className="md:col-span-7">
@@ -88,7 +88,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: reduced ? 1 : 1.04 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="relative aspect-[4/5] overflow-hidden rounded-lg md:aspect-[3/4]"
+            className="relative aspect-[5/3] overflow-hidden rounded-lg md:aspect-[3/4]"
           >
             <motion.div style={{ y, scale }} className="absolute inset-0">
               <Image

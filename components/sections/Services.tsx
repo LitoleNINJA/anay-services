@@ -18,7 +18,7 @@ export function Services() {
   }));
 
   return (
-    <section id="services" className="container-page py-24 md:py-40">
+    <section id="services" className="container-page py-20 md:py-40">
       <SectionHeader
         eyebrow={t.services.eyebrow}
         heading={t.services.heading}

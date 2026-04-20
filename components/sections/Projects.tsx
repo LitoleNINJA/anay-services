@@ -49,7 +49,7 @@ export function Projects() {
   const right = items.filter((_, i) => i % 2 === 1);
 
   return (
-    <section id="work" className="container-page py-24 md:py-40">
+    <section id="work" className="container-page py-20 md:py-40">
       <SectionHeader
         eyebrow={t.projects.eyebrow}
         heading={t.projects.heading}

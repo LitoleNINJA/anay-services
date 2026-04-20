@@ -17,8 +17,8 @@ export function About() {
   const { t, lang } = useLang();
   const a = t.about;
   return (
-    <section id="about" className="container-page py-24 md:py-40">
-      <div className="grid gap-16 md:grid-cols-12 md:gap-10">
+    <section id="about" className="container-page py-20 md:py-40">
+      <div className="grid gap-12 md:grid-cols-12 md:gap-10">
         <div className="md:col-span-5">
           <div className="md:sticky md:top-32">
             <FadeUp>
@@ -41,7 +41,7 @@ export function About() {
               ))}
             </div>
 
-            <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8">
+            <dl className="mt-10 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-8 md:mt-12">
               {a.pillars.map((p, i) => (
                 <FadeUp key={p.title} delay={0.2 + i * 0.05}>
                   <div>
