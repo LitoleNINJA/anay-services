@@ -100,14 +100,26 @@ export function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 top-0 z-40 md:hidden"
-            style={{ backgroundColor: "#F7F5F0" }}
-            initial={reduced ? { opacity: 0 } : { opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduced ? { opacity: 0 } : { opacity: 0, y: -12 }}
-            transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+            key="mobile-drawer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.25, 1, 0.5, 1] }}
+            className="md:hidden"
+            style={{
+              position: "fixed",
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              backgroundColor: "#F7F5F0",
+              zIndex: 45,
+            }}
           >
-            <div className="container-page flex h-full flex-col justify-between pt-24 pb-10">
+            <div
+              className="container-page flex h-full flex-col justify-between pt-24 pb-10"
+              style={{ backgroundColor: "#F7F5F0" }}
+            >
               <ul className="flex flex-col gap-3">
                 {t.nav.map((l, i) => (
                   <motion.li
@@ -122,7 +134,8 @@ export function Nav() {
                   >
                     <Link
                       href={l.href}
-                      className="font-display block text-5xl leading-tight tracking-tight text-[--color-ink]"
+                      className="font-display block text-5xl leading-tight tracking-tight"
+                      style={{ color: "#0A0A0A" }}
                       onClick={() => setOpen(false)}
                     >
                       {l.label}
