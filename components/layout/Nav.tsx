@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
@@ -15,8 +16,11 @@ import { DubaiClock } from "./DubaiClock";
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const reduced = useReducedMotion();
   const { t } = useLang();
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -32,71 +36,9 @@ export function Nav() {
     };
   }, [open]);
 
-  return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-500",
-        scrolled || open
-          ? "bg-[--color-bone]/80 backdrop-blur-md border-b border-[--color-line]"
-          : "bg-transparent border-b border-transparent",
-      )}
-    >
-      <div className="container-page flex h-16 items-center justify-between md:h-20">
-        <Link
-          href="#top"
-          className="flex items-center"
-          aria-label="Anay Interior — home"
-          onClick={() => setOpen(false)}
-        >
-          <Image
-            src="/logo_bg_removed.png"
-            alt="Anay Interior — We design, you deserve"
-            width={1536}
-            height={1024}
-            priority
-            className="h-14 w-auto md:h-20"
-          />
-        </Link>
-
-        <nav
-          className="hidden items-center gap-8 md:flex"
-          aria-label="Primary"
-        >
-          {t.nav.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="text-sm tracking-tight text-[--color-ink]/80 transition-colors hover:text-[--color-ink]"
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="hidden items-center gap-4 md:flex">
-          <DubaiClock />
-          <LanguageToggle />
-          <Magnetic strength={0.35}>
-            <LinkButton href="#contact" variant="primary" size="sm">
-              {t.cta.getQuote}
-            </LinkButton>
-          </Magnetic>
-        </div>
-
-        <div className="flex items-center gap-3 md:hidden">
-          <LanguageToggle />
-          <button
-            type="button"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            className="relative z-[60] p-2 -mr-2 text-[--color-ink]"
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-      </div>
-
+  const drawer =
+    mounted &&
+    createPortal(
       <AnimatePresence>
         {open && (
           <motion.div
@@ -113,13 +55,10 @@ export function Nav() {
               bottom: 0,
               left: 0,
               backgroundColor: "#F7F5F0",
-              zIndex: 45,
+              zIndex: 55,
             }}
           >
-            <div
-              className="container-page flex h-full flex-col justify-between pt-24 pb-10"
-              style={{ backgroundColor: "#F7F5F0" }}
-            >
+            <div className="container-page flex h-full flex-col justify-between pt-24 pb-10">
               <ul className="flex flex-col gap-3">
                 {t.nav.map((l, i) => (
                   <motion.li
@@ -158,7 +97,84 @@ export function Nav() {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
-    </header>
+      </AnimatePresence>,
+      document.body,
+    );
+
+  return (
+    <>
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-[60] transition-[background-color,backdrop-filter,border-color] duration-500",
+          scrolled || open
+            ? "backdrop-blur-md border-b border-[--color-line]"
+            : "border-b border-transparent",
+        )}
+        style={
+          scrolled || open
+            ? { backgroundColor: "rgba(247,245,240,0.85)" }
+            : undefined
+        }
+      >
+        <div className="container-page flex h-16 items-center justify-between md:h-20">
+          <Link
+            href="#top"
+            className="flex items-center"
+            aria-label="Anay Interior — home"
+            onClick={() => setOpen(false)}
+          >
+            <Image
+              src="/logo_bg_removed.png"
+              alt="Anay Interior — We design, you deserve"
+              width={1536}
+              height={1024}
+              priority
+              className="h-14 w-auto md:h-20"
+            />
+          </Link>
+
+          <nav
+            className="hidden items-center gap-8 md:flex"
+            aria-label="Primary"
+          >
+            {t.nav.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="text-sm tracking-tight text-[--color-ink]/80 transition-colors hover:text-[--color-ink]"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-4 md:flex">
+            <DubaiClock />
+            <LanguageToggle />
+            <Magnetic strength={0.35}>
+              <LinkButton href="#contact" variant="primary" size="sm">
+                {t.cta.getQuote}
+              </LinkButton>
+            </Magnetic>
+          </div>
+
+          <div className="flex items-center gap-3 md:hidden">
+            <LanguageToggle />
+            <button
+              type="button"
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              className="relative p-2 -mr-2"
+              style={{ color: "#0A0A0A", zIndex: 70 }}
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {drawer}
+    </>
   );
 }
