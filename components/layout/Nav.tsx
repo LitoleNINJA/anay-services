@@ -124,7 +124,7 @@ export function Nav() {
             onClick={() => setOpen(false)}
           >
             <Image
-              src="/logo_bg_removed.png"
+              src="/anay-logo.png"
               alt="Anay Interior — We design, you deserve"
               width={1774}
               height={887}
