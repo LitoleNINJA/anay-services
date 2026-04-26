@@ -126,10 +126,10 @@ export function Nav() {
             <Image
               src="/logo_bg_removed.png"
               alt="Anay Interior — We design, you deserve"
-              width={1536}
-              height={1024}
+              width={1774}
+              height={887}
               priority
-              className="h-14 w-auto md:h-20"
+              className="h-12 w-auto md:h-16"
             />
           </Link>
 
