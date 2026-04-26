@@ -20,7 +20,7 @@ export function RevealText({
   const reduced = useReducedMotion();
   const Tag = As as "h1";
   return (
-    <Tag className={cn("font-display leading-[0.95]", className)}>
+    <Tag className={cn("font-display leading-[0.92]", className)}>
       <motion.span
         className="block"
         initial="hidden"
@@ -43,7 +43,7 @@ export function RevealText({
           <span
             key={i}
             className={cn(
-              "relative block overflow-hidden pb-[0.12em]",
+              "relative block overflow-hidden pb-[0.08em]",
               lineClassName,
             )}
           >

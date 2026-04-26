@@ -26,15 +26,15 @@ export function Hero() {
     <section
       id="top"
       ref={ref}
-      className="relative isolate flex min-h-[100svh] items-end overflow-hidden pt-24 pb-12 md:pt-28 md:pb-24"
+      className="relative isolate overflow-hidden pt-20 pb-10 md:flex md:min-h-[100svh] md:items-end md:pt-28 md:pb-24"
     >
-      <div className="container-page relative z-10 grid w-full grid-cols-1 items-end gap-12 md:grid-cols-12">
+      <div className="container-page relative z-10 grid w-full grid-cols-1 items-end gap-8 md:grid-cols-12 md:gap-12">
         <div className="md:col-span-7">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1], delay: 0.1 }}
-            className="mb-8 flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-[--color-muted]"
+            className="mb-5 flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-[--color-muted] md:mb-8"
           >
             <span className="h-px w-10 bg-[--color-gold]" aria-hidden />
             {t.hero.eyebrow}
@@ -52,7 +52,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1], delay: 0.9 }}
-            className="mt-8 max-w-xl text-lg leading-relaxed text-[--color-muted]"
+            className="mt-5 max-w-xl text-base leading-relaxed text-[--color-muted] md:mt-8 md:text-lg"
           >
             {t.hero.lede}
           </motion.p>
@@ -61,7 +61,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1], delay: 1.05 }}
-            className="mt-10 flex flex-wrap items-center gap-3"
+            className="mt-7 flex flex-wrap items-center gap-3 md:mt-10"
           >
             <Magnetic strength={0.32}>
               <LinkButton
