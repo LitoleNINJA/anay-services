@@ -129,7 +129,7 @@ export function Nav() {
               width={1774}
               height={887}
               priority
-              className="h-12 w-auto md:h-16"
+              className="h-12 w-auto mix-blend-multiply md:h-16"
             />
           </Link>
 
