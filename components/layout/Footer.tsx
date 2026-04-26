@@ -62,17 +62,19 @@ export function Footer() {
             </address>
           </div>
 
-          <div className="md:col-span-2">
-            <FooterColTitle>{t.footer.columns.company}</FooterColTitle>
-            <FooterColList items={companyLinks} />
-          </div>
-          <div className="md:col-span-3">
-            <FooterColTitle>{t.footer.columns.services}</FooterColTitle>
-            <FooterColList items={serviceLinks} />
-          </div>
-          <div className="md:col-span-2">
-            <FooterColTitle>{t.footer.columns.elsewhere}</FooterColTitle>
-            <FooterColList items={elsewhereLinks} external />
+          <div className="grid grid-cols-3 gap-6 md:contents">
+            <div className="md:col-span-2">
+              <FooterColTitle>{t.footer.columns.company}</FooterColTitle>
+              <FooterColList items={companyLinks} />
+            </div>
+            <div className="md:col-span-3">
+              <FooterColTitle>{t.footer.columns.services}</FooterColTitle>
+              <FooterColList items={serviceLinks} />
+            </div>
+            <div className="md:col-span-2">
+              <FooterColTitle>{t.footer.columns.elsewhere}</FooterColTitle>
+              <FooterColList items={elsewhereLinks} external />
+            </div>
           </div>
         </div>
 
