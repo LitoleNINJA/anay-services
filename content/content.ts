@@ -195,24 +195,24 @@ export const PROJECTS: Project[] = [
   {
     title: "SO Hotel, Ras Al Khaimah",
     image: {
-      src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80",
-      alt: "SO Hotel, Ras Al Khaimah",
+      src: "/images/projects/so-hotel.jpg",
+      alt: "SO Hotel, Ras Al Khaimah — curved waterfront façade at dusk.",
     },
     span: "square",
   },
   {
     title: "UAE Olympic Committee, Dubai",
     image: {
-      src: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1600&q=80",
-      alt: "UAE Olympic Committee, Dubai",
+      src: "/images/projects/olympic-committee-dubai.jpg",
+      alt: "UAE Olympic Committee headquarters, Dubai — white perforated façade.",
     },
     span: "tall",
   },
   {
     title: "DIFC, Dubai",
     image: {
-      src: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80",
-      alt: "DIFC, Dubai",
+      src: "/images/projects/difc-cp50.jpg",
+      alt: "DIFC CP50, Dubai — terraced commercial tower with planted balconies.",
     },
     span: "wide",
   },
