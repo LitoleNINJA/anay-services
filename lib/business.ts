@@ -9,7 +9,7 @@ export const BUSINESS = {
   phoneHref: "tel:+971568532328",
   whatsappHref: "https://wa.me/971568532328",
   address: {
-    street: "274 IDS Group, Al Karama",
+    street: "",
     city: "Dubai",
     region: "Dubai",
     postalCode: "P.O. Box 44320",
@@ -70,9 +70,14 @@ export function buildLocalBusinessJsonLd(siteUrl: string) {
     image: `${siteUrl}/opengraph-image`,
     address: {
       "@type": "PostalAddress",
-      streetAddress: BUSINESS.address.street,
+      ...(BUSINESS.address.street
+        ? { streetAddress: BUSINESS.address.street }
+        : {}),
       addressLocality: BUSINESS.address.city,
       addressRegion: BUSINESS.address.region,
+      ...(BUSINESS.address.postalCode
+        ? { postalCode: BUSINESS.address.postalCode }
+        : {}),
       addressCountry: BUSINESS.address.country,
     },
     areaServed: BUSINESS.areaServed.map((a) => ({ "@type": "City", name: a })),

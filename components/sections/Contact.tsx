@@ -10,10 +10,7 @@ export function Contact() {
   const { t } = useLang();
   const c = t.contact;
 
-  const addressLines = [
-    "274 IDS Group, Al Karama",
-    "Dubai, U.A.E. · P.O. Box 44320",
-  ];
+  const addressLines = ["Dubai, U.A.E. · P.O. Box 44320"];
 
   return (
     <section id="contact" className="container-page py-20 md:py-32">

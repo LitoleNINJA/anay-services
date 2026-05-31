@@ -10,10 +10,7 @@ export function Footer() {
   const { t } = useLang();
   const year = new Date().getFullYear();
 
-  const addressLines = [
-    "274 IDS Group, Al Karama",
-    "Dubai, U.A.E. · P.O. Box 44320",
-  ];
+  const addressLines = ["Dubai, U.A.E. · P.O. Box 44320"];
 
   const companyLinks = t.nav
     .filter((n) => n.href !== "#services")
@@ -80,13 +77,13 @@ export function Footer() {
 
         <div className="mt-14 md:mt-20">
           <motion.p
-            className="font-display leading-[0.9] text-[clamp(5rem,18vw,15rem)] tracking-[-0.04em] pb-[0.18em]"
+            className="font-display leading-[0.9] text-[clamp(3.5rem,14vw,12rem)] tracking-[-0.04em] pb-[0.18em] whitespace-nowrap"
             initial={reduced ? {} : { clipPath: "inset(100% 0 0 0)" }}
             whileInView={{ clipPath: "inset(0% 0 0 0)" }}
             viewport={{ once: true, margin: "-10% 0px" }}
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            Anay<span className="text-[--color-gold]">.</span>
+            Anay<span style={{ color: "#C8A96A" }}>·</span>Interior
           </motion.p>
         </div>
 
