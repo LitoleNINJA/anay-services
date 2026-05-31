@@ -29,7 +29,7 @@ All copy, services, projects, stats and links live in **`content/content.ts`**. 
 ```
 RESEND_API_KEY          # from resend.com
 CONTACT_TO_EMAIL        # inbox receiving enquiries
-CONTACT_FROM_EMAIL      # verified sender, e.g. "Anay Interior <noreply@anayinterior.com>"
+CONTACT_FROM_EMAIL      # verified sender, e.g. "Anay Interior <noreply@anayservices.com>"
 NEXT_PUBLIC_SITE_URL    # https://www.anayinterior.com
 ```
 

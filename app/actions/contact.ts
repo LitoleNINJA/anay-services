@@ -27,6 +27,53 @@ function renderEmailText(data: ContactInput): string {
   ].join("\n");
 }
 
+function renderWhatsAppText(data: ContactInput): string {
+  return [
+    `*New enquiry — ${data.service}*`,
+    `${data.name}`,
+    data.email,
+    data.phone ? data.phone : null,
+    "",
+    data.message,
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+async function sendWhatsApp(data: ContactInput): Promise<void> {
+  const sid = process.env.TWILIO_ACCOUNT_SID;
+  const token = process.env.TWILIO_AUTH_TOKEN;
+  const from = process.env.TWILIO_WHATSAPP_FROM; // e.g. "whatsapp:+14155238886"
+  const to = process.env.TWILIO_WHATSAPP_TO; // e.g. "whatsapp:+971568532328"
+
+  if (!sid || !token || !from || !to) return;
+
+  try {
+    const auth = Buffer.from(`${sid}:${token}`).toString("base64");
+    const resp = await fetch(
+      `https://api.twilio.com/2010-04-01/Accounts/${sid}/Messages.json`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Basic ${auth}`,
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          From: from,
+          To: to,
+          Body: renderWhatsAppText(data),
+        }).toString(),
+      },
+    );
+    if (!resp.ok) {
+      const text = await resp.text();
+      console.error("Twilio WhatsApp send failed:", resp.status, text);
+    }
+  } catch (e) {
+    console.error("Twilio WhatsApp send error:", e);
+  }
+}
+
 export async function submitContact(
   _prev: ContactState,
   formData: FormData,
@@ -61,21 +108,24 @@ export async function submitContact(
   }
   recentSubmissions.set(key, now);
 
+  const to = process.env.CONTACT_TO_EMAIL;
+  const from = process.env.CONTACT_FROM_EMAIL;
+
   try {
-    const to = process.env.CONTACT_TO_EMAIL;
-    const from = process.env.CONTACT_FROM_EMAIL;
-    if (!to || !from) {
+    if (to && from) {
+      await getResend().emails.send({
+        from,
+        to,
+        replyTo: parsed.data.email,
+        subject: `New enquiry — ${parsed.data.service} — ${parsed.data.name}`,
+        text: renderEmailText(parsed.data),
+      });
+    } else {
       console.warn("Contact form submitted but email env vars are not configured.");
-      return { status: "success" };
     }
 
-    await getResend().emails.send({
-      from,
-      to,
-      replyTo: parsed.data.email,
-      subject: `New enquiry — ${parsed.data.service} — ${parsed.data.name}`,
-      text: renderEmailText(parsed.data),
-    });
+    // Best-effort WhatsApp ping to the owner. Never blocks the form result.
+    void sendWhatsApp(parsed.data);
 
     return { status: "success" };
   } catch (err) {

@@ -4,10 +4,10 @@ export const BUSINESS = {
   tagline: "We design, you deserve.",
   description:
     "Premium flooring, finishing and technical fit-out services across the UAE. Carpet, tile, vinyl, LVT, raised floor, gypsum, paint, plaster and MEP.",
-  email: "info@anayinterior.com",
-  phone: "+971 55 7141 060",
-  phoneHref: "tel:+971557141060",
-  whatsappHref: "https://wa.me/971557141060",
+  email: "info@anayservices.com",
+  phone: "+971 56 853 2328",
+  phoneHref: "tel:+971568532328",
+  whatsappHref: "https://wa.me/971568532328",
   address: {
     street: "274 IDS Group, Al Karama",
     city: "Dubai",
