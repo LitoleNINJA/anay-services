@@ -177,25 +177,45 @@ export function ContactForm() {
         <motion.button
           type="submit"
           disabled={isPending}
-          whileTap={{ scale: 0.98 }}
-          className={cn(
-            "group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[--color-ink] px-7 text-sm font-medium text-[--color-bone] transition-colors hover:bg-[--color-gold] hover:text-[--color-ink] disabled:cursor-not-allowed disabled:opacity-60",
-          )}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 500, damping: 22 }}
+          className="group relative inline-flex h-12 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full px-7 text-sm font-medium shadow-[0_1px_0_rgba(10,10,10,0.04),0_12px_28px_-14px_rgba(10,10,10,0.5)] transition-shadow duration-300 hover:shadow-[0_1px_0_rgba(10,10,10,0.04),0_18px_36px_-14px_rgba(200,169,106,0.55)] focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+          style={{
+            backgroundColor: "#0A0A0A",
+            color: "#F7F5F0",
+          }}
         >
-          {isPending ? (
-            <>
-              <Spinner /> {f.submitting}
-            </>
-          ) : (
-            <>
-              {f.submit}
-              <ArrowUpRight
-                size={16}
-                strokeWidth={1.6}
-                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </>
-          )}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 origin-left scale-x-0 transition-transform duration-[450ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+            style={{ backgroundColor: "#C8A96A" }}
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-active:opacity-100"
+            style={{
+              background:
+                "radial-gradient(circle at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 60%)",
+            }}
+          />
+          <span
+            className="relative z-10 inline-flex items-center gap-2 transition-colors duration-200 group-hover:text-[#0A0A0A]"
+          >
+            {isPending ? (
+              <>
+                <Spinner /> {f.submitting}
+              </>
+            ) : (
+              <>
+                {f.submit}
+                <ArrowUpRight
+                  size={16}
+                  strokeWidth={1.6}
+                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </>
+            )}
+          </span>
         </motion.button>
       </Magnetic>
 
