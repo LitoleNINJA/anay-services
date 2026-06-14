@@ -31,7 +31,7 @@ const cairo = Cairo({
 });
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.anayinterior.com";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.anayservices.com";
 
 export const viewport: Viewport = {
   themeColor: "#0A0A0A",

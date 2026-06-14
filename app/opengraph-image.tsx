@@ -72,7 +72,7 @@ export default function Image() {
             fontSize: 20,
           }}
         >
-          <span>anayinterior.com</span>
+          <span>anayservices.com</span>
           <span style={{ color: "#C8A96A", fontWeight: 700 }}>+</span>
         </div>
       </div>

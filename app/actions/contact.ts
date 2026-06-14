@@ -149,7 +149,7 @@ function renderUserConfirmHtml(data: ContactInput): string {
 
   <p style="max-width:560px;margin:18px auto 0;font-size:11px;line-height:1.6;color:#8A8680;text-align:center;">
     ${safe(BUSINESS.legalName)} · ${safe(BUSINESS.address.street)}, ${safe(BUSINESS.address.city)}, U.A.E.<br/>
-    You received this because you submitted the contact form on anayinterior.com.
+    You received this because you submitted the contact form on anayservices.com.
   </p>
 </body></html>`;
 }
