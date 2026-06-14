@@ -68,6 +68,12 @@ export type Translation = {
       legalNote: string;
     };
   };
+  faq: {
+    eyebrow: string;
+    heading: string;
+    lede: string;
+    items: Array<{ q: string; a: string }>;
+  };
   footer: {
     tagline: string;
     intro: string;
@@ -187,6 +193,37 @@ const TRANSLATIONS: Record<Lang, Translation> = {
         errorToast: "Could not send. Please email us directly.",
         legalNote: "By sending this form you agree we may contact you about your enquiry. We never share your details.",
       },
+    },
+    faq: {
+      eyebrow: "FAQ",
+      heading: "Good to know.",
+      lede: "The questions we're asked most before a project starts. Anything else — just reach out.",
+      items: [
+        {
+          q: "Which areas of the UAE do you cover?",
+          a: "We work across all seven emirates — Dubai, Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah and Umm Al Quwain — with most of our projects in Dubai and Abu Dhabi.",
+        },
+        {
+          q: "What services does Anay Interior offer?",
+          a: "We're a single-team fit-out contractor covering civil works, flooring (carpet, tile, vinyl, LVT, raised floor and wood), painting, electrical, plumbing and gypsum false ceilings and partitions.",
+        },
+        {
+          q: "Do you handle both residential and commercial projects?",
+          a: "Yes. We deliver private villas and apartments as well as offices, retail, hospitality and government fit-outs across the UAE.",
+        },
+        {
+          q: "How do I get a quote and how long does it take?",
+          a: "Send us your details through the contact form or WhatsApp. We arrange a free site visit, then return a clear, itemised quotation within 3 to 5 working days.",
+        },
+        {
+          q: "Are you licensed, and do you offer a warranty?",
+          a: "Anay Technical Services is a licensed Dubai contractor with DEWA-approved electrical works. Every project comes with a 12-month workmanship warranty and a named point of contact for aftercare.",
+        },
+        {
+          q: "What types of flooring do you install?",
+          a: "Carpet (broadloom and tile), porcelain and stone tiling, sheet vinyl, luxury vinyl tile (LVT), raised access floors and engineered wood — supplied and installed to specification.",
+        },
+      ],
     },
     footer: {
       tagline: "We design, you deserve.",
@@ -311,6 +348,37 @@ const TRANSLATIONS: Record<Lang, Translation> = {
         errorToast: "تعذّر الإرسال. يرجى مراسلتنا مباشرة.",
         legalNote: "بإرسال هذا النموذج، توافق على تواصلنا معك بشأن استفسارك. لن نشارك بياناتك أبداً.",
       },
+    },
+    faq: {
+      eyebrow: "الأسئلة الشائعة",
+      heading: "أسئلة يجدر معرفتها.",
+      lede: "أكثر الأسئلة التي تُطرح علينا قبل بدء أي مشروع. لأي استفسار آخر — تواصل معنا مباشرة.",
+      items: [
+        {
+          q: "ما هي المناطق التي تغطّونها في الإمارات؟",
+          a: "نعمل في جميع الإمارات السبع — دبي، أبوظبي، الشارقة، عجمان، رأس الخيمة، الفجيرة وأم القيوين — ومعظم مشاريعنا في دبي وأبوظبي.",
+        },
+        {
+          q: "ما الخدمات التي تقدّمها أناي إنتيريور؟",
+          a: "نحن مقاول تشطيبات بفريق متكامل يغطّي الأعمال المدنية، الأرضيات (سجاد، سيراميك، فينيل، LVT، أرضيات مرتفعة وخشب)، الطلاء، الكهرباء، السباكة، والأسقف والقواطع الجبسية.",
+        },
+        {
+          q: "هل تنفّذون المشاريع السكنية والتجارية معاً؟",
+          a: "نعم. ننفّذ الفلل والشقق الخاصة، إضافة إلى المكاتب والمتاجر والفنادق والمشاريع الحكومية في أنحاء الإمارات.",
+        },
+        {
+          q: "كيف أحصل على عرض سعر وكم يستغرق؟",
+          a: "أرسل تفاصيلك عبر نموذج التواصل أو واتساب. ننسّق زيارة ميدانية مجانية، ثم نقدّم عرض سعر واضحاً ومفصّلاً خلال ٣ إلى ٥ أيام عمل.",
+        },
+        {
+          q: "هل أنتم مرخّصون، وهل تقدّمون ضماناً؟",
+          a: "شركة أناي للخدمات الفنية مقاول مرخّص في دبي مع أعمال كهربائية معتمدة من هيئة كهرباء ومياه دبي. كل مشروع يأتي بضمان عمل لمدة ١٢ شهراً وجهة اتصال مخصّصة للخدمة بعد التسليم.",
+        },
+        {
+          q: "ما أنواع الأرضيات التي تركّبونها؟",
+          a: "سجاد (لفائف وبلاط)، بلاط بورسلين وحجر، فينيل، بلاط الفينيل الفاخر (LVT)، أرضيات وصول مرتفعة وخشب هندسي — توريداً وتركيباً حسب المواصفات.",
+        },
+      ],
     },
     footer: {
       tagline: "نصمّم، وأنت تستحقّ.",

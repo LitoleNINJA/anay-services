@@ -56,18 +56,54 @@ export function isOpenNow(date: Date = new Date()) {
   return minutes >= oh * 60 + om && minutes < ch * 60 + cm;
 }
 
-export function buildLocalBusinessJsonLd(siteUrl: string) {
-  return {
-    "@context": "https://schema.org",
+// Approx. Dubai coordinates (Al Quoz / business-bay belt).
+const GEO = { latitude: 25.2048, longitude: 55.2708 };
+
+const SERVICE_CATALOG = [
+  "Civil works (plastering, wall tiling, engraving)",
+  "Flooring (carpet, tile, vinyl, LVT, raised floor, wood)",
+  "Painting",
+  "Electrical fittings & fixtures",
+  "Plumbing & sanitary installation",
+  "Gypsum false ceilings & light partitions",
+];
+
+type ServiceInput = { title: string; blurb: string };
+type FaqInput = { q: string; a: string };
+
+/**
+ * Builds a single schema.org @graph: the business entity, the website,
+ * one Service node per offering, and (optionally) a FAQPage. Rendered
+ * server-side so search engines see it in the static HTML.
+ */
+export function buildJsonLd(
+  siteUrl: string,
+  opts: { services?: ServiceInput[]; faq?: FaqInput[] } = {},
+) {
+  const businessId = `${siteUrl}/#business`;
+  const websiteId = `${siteUrl}/#website`;
+
+  const areaServed = BUSINESS.areaServed.map((a) => ({
+    "@type": "City",
+    name: a,
+  }));
+
+  const business = {
     "@type": "HomeAndConstructionBusiness",
+    "@id": businessId,
     name: BUSINESS.name,
     legalName: BUSINESS.legalName,
     description: BUSINESS.description,
+    slogan: BUSINESS.tagline,
     url: siteUrl,
     telephone: BUSINESS.phone,
     email: BUSINESS.email,
     priceRange: "$$",
+    currenciesAccepted: "AED",
+    paymentAccepted: "Cash, Bank Transfer, Cheque",
+    knowsLanguage: ["en", "ar"],
     image: `${siteUrl}/opengraph-image`,
+    logo: `${siteUrl}/new_logo_bg_removed.png`,
     address: {
       "@type": "PostalAddress",
       ...(BUSINESS.address.street
@@ -80,7 +116,16 @@ export function buildLocalBusinessJsonLd(siteUrl: string) {
         : {}),
       addressCountry: BUSINESS.address.country,
     },
-    areaServed: BUSINESS.areaServed.map((a) => ({ "@type": "City", name: a })),
+    geo: { "@type": "GeoCoordinates", ...GEO },
+    areaServed,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: BUSINESS.phone,
+      email: BUSINESS.email,
+      contactType: "customer service",
+      areaServed: "AE",
+      availableLanguage: ["en", "ar"],
+    },
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -93,17 +138,49 @@ export function buildLocalBusinessJsonLd(siteUrl: string) {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Fit-Out Services",
-      itemListElement: [
-        "Civil works (plastering, wall tiling, engraving)",
-        "Flooring (carpet, tile, vinyl, LVT, raised floor, wood)",
-        "Painting",
-        "Electrical fittings & fixtures",
-        "Plumbing & sanitary installation",
-        "Gypsum false ceilings & light partitions",
-      ].map((name) => ({
+      itemListElement: SERVICE_CATALOG.map((name) => ({
         "@type": "Offer",
         itemOffered: { "@type": "Service", name },
       })),
     },
-  } as const;
+  };
+
+  const website = {
+    "@type": "WebSite",
+    "@id": websiteId,
+    url: siteUrl,
+    name: BUSINESS.name,
+    inLanguage: ["en", "ar"],
+    publisher: { "@id": businessId },
+  };
+
+  const serviceNodes = (opts.services ?? []).map((s, i) => ({
+    "@type": "Service",
+    "@id": `${siteUrl}/#service-${i + 1}`,
+    name: `${s.title} — Dubai & UAE`,
+    serviceType: s.title,
+    description: s.blurb,
+    provider: { "@id": businessId },
+    areaServed,
+  }));
+
+  const faqNode =
+    opts.faq && opts.faq.length
+      ? [
+          {
+            "@type": "FAQPage",
+            "@id": `${siteUrl}/#faq`,
+            mainEntity: opts.faq.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          },
+        ]
+      : [];
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [business, website, ...serviceNodes, ...faqNode],
+  };
 }

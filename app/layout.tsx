@@ -9,7 +9,8 @@ import { Grain } from "@/components/ui/Grain";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { LanguageProvider } from "@/context/LanguageProvider";
-import { BUSINESS, buildLocalBusinessJsonLd } from "@/lib/business";
+import { BUSINESS, buildJsonLd } from "@/lib/business";
+import TRANSLATIONS from "@/content/translations";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -39,43 +40,75 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const TITLE = "Flooring & Fit-Out Contractor in Dubai | Anay Interior";
+const DESCRIPTION =
+  "Dubai-based flooring & fit-out contractor — carpet, tile, vinyl, LVT, gypsum, paint, electrical & plumbing for homes, offices & retail across the UAE.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${BUSINESS.name} — Flooring & Fit-Out · UAE`,
-    template: `%s — ${BUSINESS.name}`,
+    default: TITLE,
+    template: `%s | ${BUSINESS.name}`,
   },
-  description: BUSINESS.description,
+  description: DESCRIPTION,
+  applicationName: BUSINESS.name,
+  authors: [{ name: BUSINESS.name, url: siteUrl }],
+  creator: BUSINESS.name,
+  publisher: BUSINESS.legalName,
+  category: "Interior Fit-Out & Flooring",
   keywords: [
     "flooring Dubai",
-    "fit-out UAE",
+    "fit out company Dubai",
+    "interior fit out Dubai",
+    "fit-out contractor UAE",
     "carpet installation Dubai",
-    "LVT installer UAE",
+    "LVT flooring Dubai",
     "tile contractor Dubai",
     "raised floor Dubai",
     "gypsum partition Dubai",
-    "painting Dubai",
-    "plastering Dubai",
-    "MEP contractor UAE",
+    "false ceiling Dubai",
+    "painting services Dubai",
+    "electrical contractor Dubai",
+    "plumbing services Dubai",
+    "civil works Dubai",
+    "fit out Abu Dhabi",
+    "flooring company UAE",
   ],
   alternates: { canonical: "/" },
+  formatDetection: { email: false, address: false, telephone: true },
   openGraph: {
     type: "website",
     url: siteUrl,
     siteName: BUSINESS.name,
-    title: `${BUSINESS.name} — Flooring & Fit-Out · UAE`,
-    description: BUSINESS.description,
+    title: TITLE,
+    description: DESCRIPTION,
     locale: "en_AE",
+    alternateLocale: ["ar_AE"],
   },
   twitter: {
     card: "summary_large_image",
-    title: BUSINESS.name,
-    description: BUSINESS.description,
+    title: TITLE,
+    description: DESCRIPTION,
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
+  other: {
+    "geo.region": "AE-DU",
+    "geo.placename": "Dubai",
+    "geo.position": "25.2048;55.2708",
+    ICBM: "25.2048, 55.2708",
   },
 };
 
@@ -84,13 +117,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const jsonLd = buildLocalBusinessJsonLd(siteUrl);
+  const jsonLd = buildJsonLd(siteUrl, {
+    services: TRANSLATIONS.en.services.items.map((s) => ({
+      title: s.title,
+      blurb: s.blurb,
+    })),
+    faq: TRANSLATIONS.en.faq.items.map((f) => ({ q: f.q, a: f.a })),
+  });
   return (
     <html
       lang="en"
       className={`${fraunces.variable} ${inter.variable} ${cairo.variable} h-full`}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link
+          rel="dns-prefetch"
+          href="https://images.unsplash.com"
+        />
+      </head>
       <body className="min-h-full bg-[--color-bone] text-[--color-ink] antialiased">
         <a
           href="#top"

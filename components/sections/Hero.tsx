@@ -43,7 +43,7 @@ export function Hero() {
           <RevealText
             key={lang}
             lines={t.hero.headingLines}
-            as="h1"
+            as="p"
             className="text-[--color-ink] text-[clamp(2.75rem,9vw,8rem)] tracking-[-0.03em]"
             delay={0.15}
           />
