@@ -103,7 +103,7 @@ export function buildJsonLd(
     paymentAccepted: "Cash, Bank Transfer, Cheque",
     knowsLanguage: ["en", "ar"],
     image: `${siteUrl}/opengraph-image`,
-    logo: `${siteUrl}/new_logo_bg_removed.png`,
+    logo: `${siteUrl}/images/anay-logo-full.jpeg`,
     address: {
       "@type": "PostalAddress",
       ...(BUSINESS.address.street

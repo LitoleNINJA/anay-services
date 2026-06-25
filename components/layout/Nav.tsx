@@ -124,12 +124,12 @@ export function Nav() {
             onClick={() => setOpen(false)}
           >
             <Image
-              src="/new_logo_bg_removed.png"
-              alt="Anay Interior — We design, you deserve"
-              width={1536}
-              height={1024}
+              src="/images/anay-logo-streatched.jpeg"
+              alt="Anay Interior — flooring & fit-out contractor in Dubai"
+              width={689}
+              height={237}
               priority
-              className="h-[5.5rem] w-auto -my-3 md:h-32 md:-my-6"
+              className="h-12 w-auto mix-blend-multiply md:h-16"
             />
           </Link>
 
